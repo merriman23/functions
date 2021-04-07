@@ -8,17 +8,34 @@ userConversionInput = input("What type of conversion \n\t1-inches to mm \n\t2-mm
 
 userInput = input("What is your number: ")
 
-
 userNumber = float(userInput)
+
+def calculate(number, conversionType):
+    if conversionType == '1':
+        print('inches to mm')
+        answer = number * 25.4
+    if conversionType == '2':
+        print('mm to inches')
+        answer = number / 25.4
+    return answer
+
+def printResults(userConversionInput, userInput, userAnswer):
+    if userConversionInput == '1':
+        conversionUnit = 'in'
+        convertedUnit = 'mm'
+    if userConversionInput == '2':
+        conversionUnit = 'mm'
+        convertedUnit = 'in'
+    print(userInput,conversionUnit,'=',userAnswer,convertedUnit)
+    
+
 print(type(userInput)) 
-# Perform the conversion
-# Convert in to mm 25.4 mm : 1 in
-# Convert from in to mm  (in * 25.4)
-if userConversionInput == '1':
-    userAnswer = userNumber * 25.4
-# Convert from mm to in 
-if userConversionInput == '2':
-    userAnswer = userNumber / 25.4
+
+
+userAnswer = calculate(userNumber,userConversionInput)
+printResults(userConversionInput,userInput,userAnswer)
+
+
 
 # Print out the answer to the user
 print("The answer is:", userAnswer)
