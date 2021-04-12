@@ -12,6 +12,9 @@ def inToFt(userNumber):
 
 def inToMM(userNumber):
     return userNumber * 25.4
+
+def FtToIn(userNumber):
+    return userNumber * 12
         
 def printResults(userConversionInput, userNumber):
     if userConversionInput == '1':
@@ -29,10 +32,20 @@ def printResults(userConversionInput, userNumber):
         conversionUnit = 'in'
         convertedUnit = 'ft'
         calcValue = inToFt(userNumber)
+    if userConversionInput == '4':
+        #set first value to in and second value to ft
+        conversionUnit = 'ft'
+        convertedUnit = 'in'
+        calcValue = FtToIn(userNumber)
     print('Conversion --> ', userNumber, conversionUnit, '=', calcValue, convertedUnit)
 
 while True:
-    userConversionInput = input('What type of conversion? \n\t 1-inches to mm \n\t 2-mm to inches: \n\t 3-inches to feet\n\t Q-to Quit\n')
+    userConversionInput = input('What type of conversion?'
+    '\n\t 1-inches to mm'
+    '\n\t 2-mm to inches'
+    '\n\t 3-inches to feet'
+    '\n\t 4-feet to inches'
+    '\n\t Q-to Quit\n')
     if userConversionInput == 'Q':
         break
     userInput = input('What is the number: ')
