@@ -1,41 +1,40 @@
-# Get information from the user
-# TODO user input validation for menu
-# TODO user input validation for number
+# Get information from the user about conversion
+# TODO User input validation for menu
+# TODO User input validation for number
 # user input on the type of conversion
-# user enters in to convert in to mm, mm for mm to in
-# user enters 1 for in to mm, 2 for mm to in
-userConversionInput = input("What type of conversion \n\t1-inches to mm \n\t2-mm to inches: ")
+# Menu system 1-inches to mm 2-mm to inches
 
-userInput = input("What is your number: ")
+def MMToin(userNumber):
+    return userNumber / 25.4
 
-userNumber = float(userInput)
+def inToFt(userNumber):
+    return userNumber / 12
 
-def calculate(number, conversionType):
-    if conversionType == '1':
-        print('inches to mm')
-        answer = number * 25.4
-    if conversionType == '2':
-        print('mm to inches')
-        answer = number / 25.4
-    return answer
-
-def printResults(userConversionInput, userInput, userAnswer):
+def inToMM(userNumber):
+    return userNumber * 25.4
+        
+def printResults(userConversionInput, userNumber):
     if userConversionInput == '1':
+        #set first value to in and second value to mm
         conversionUnit = 'in'
         convertedUnit = 'mm'
+        calcValue = inToMM(userNumber)
     if userConversionInput == '2':
+        #set first value to mm and second value to in
         conversionUnit = 'mm'
         convertedUnit = 'in'
-    print(userInput,conversionUnit,'=',userAnswer,convertedUnit)
-    
+        calcValue = MMToin(userNumber)
+    if userConversionInput == '3':
+        #set first value to in and second value to ft
+        conversionUnit = 'in'
+        convertedUnit = 'ft'
+        calcValue = inToFt(userNumber)
+    print('Conversion --> ', userNumber, conversionUnit, '=', calcValue, convertedUnit)
 
-print(type(userInput)) 
-
-
-userAnswer = calculate(userNumber,userConversionInput)
-printResults(userConversionInput,userInput,userAnswer)
-
-
-
-# Print out the answer to the user
-print("The answer is:", userAnswer)
+while True:
+    userConversionInput = input('What type of conversion? \n\t 1-inches to mm \n\t 2-mm to inches: \n\t 3-inches to feet\n\t Q-to Quit\n')
+    if userConversionInput == 'Q':
+        break
+    userInput = input('What is the number: ')
+    userNumber = float(userInput)  
+    printResults(userConversionInput,userNumber)
